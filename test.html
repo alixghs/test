@@ -3,12 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>ExploreWKWebViewJavascript</title>
+  <title>Webview test</title>
   <script type="text/javascript">
-    function submitForm() {
+    function sendTopUp() {
       var message = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value
+        carrier: document.getElementById("carrier").value
+      };
+      window.webkit.messageHandlers.observer.postMessage(message);
+    }
+
+    function sendPaymentService() {
+      var message = {
+        carrier: document.getElementById("carrier").value
       };
       window.webkit.messageHandlers.observer.postMessage(message);
     }
@@ -18,14 +24,13 @@
 <div>
   <h2>Enter your data:</h2>
   <div>
-    <label for="email">Email:</label>
-    <input type="email" id="email" placeholder="Enter email" name="email">
+    <label for="carrier">Carrier:</label>
+    <input id="carrier" placeholder="Enter carrier" name="carrier">
   </div>
-  <div>
-    <label for="name  ">Name:</label>
-    <input type="value" id="name" placeholder="Enter name" name="name">
-  </div>
-  <button onclick="submitForm()">Click me</button>
+
+  <button onclick="sendTopUp()">TopUps</button>
+
+  <button onclick="sendPaymentService()">ServicePayment</button>
 </div>
 </body>
 </html>

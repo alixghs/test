@@ -9,14 +9,16 @@
       var message = {
         carrier: document.getElementById("carrier").value
       };
-      window.webkit.messageHandlers.observer.postMessage(message);
+      window.webkit.messageHandlers.topUp.postMessage(message);
     }
 
     function sendPaymentService() {
       var message = {
-        carrier: document.getElementById("carrier").value
+        type: "BILL_PAYMENT",
+        transactionId: "232343434",
+        amount: 315.4
       };
-      window.webkit.messageHandlers.observer.postMessage(message);
+      window.webkit.messageHandlers.servicePayment.postMessage(message);
     }
   </script>
 </head>
